@@ -154,8 +154,12 @@ app.post('/api/tickets/:id/messages/:messageId/feedback', (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`====================================================`);
-  console.log(`  KaKo CRM & Routing Backend running on port ${PORT}  `);
-  console.log(`====================================================`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`====================================================`);
+    console.log(`  KaKo CRM & Routing Backend running on port ${PORT}  `);
+    console.log(`====================================================`);
+  });
+}
+
+export default app;
